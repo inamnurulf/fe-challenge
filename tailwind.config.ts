@@ -19,6 +19,10 @@ const config: Config = {
         'tertiary': '#2A63AB',
         'quaternary': '#96B7D6',
       },
+      fontFamily: {
+        roboto: ['Roboto', 'sans'],
+      },
+
     },
   },
   plugins: [],

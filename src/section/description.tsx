@@ -2,7 +2,7 @@ import React from "react";
 
 const Description = () => {
   return (
-    <section className="min-h-screen">this is description section</section>
+    <section className="min-h-screen bg-primary">this is description section</section>
   );
 };
 
