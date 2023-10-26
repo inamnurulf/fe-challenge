@@ -99,7 +99,6 @@ const Post = () => {
   };
 
   const chunkedCards = chunkArray({ arr: array, size: 6 });
-  console.log(chunkedCards.length);
 
   return (
     <section className="min-h-screen bg-primary max-w-screen flex justify-center items-center">

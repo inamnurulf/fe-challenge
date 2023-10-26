@@ -13,6 +13,17 @@ pnpm dev
 # or
 bun dev
 ```
+Second, create a .env file by copying the provided .env.example:
+
+```shell
+    cp .env.example .env
+```
+
+Third, modify the values in the .env file to match your configuration needs, get your access token from [gorest.co.in](https://gorest.co.in):
+
+```shell
+NEXT_PUBLIC_REACT_APP_BEARER_TOKEN='ur-token-from-https://gorest.co.in'
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
