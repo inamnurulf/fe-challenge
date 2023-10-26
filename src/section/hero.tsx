@@ -48,7 +48,7 @@ const Hero = () => {
   }, [scrollY]);
 
   return (
-    <section className="h-[100vh] relative overflow-hidden ">
+    <section className="md:h-[120vh] h-[100vh] relative overflow-hidden ">
       <div ref={parallaxRefMoon} className="absolute top-0 w-full">
         <Image
          className=''
@@ -86,7 +86,7 @@ const Hero = () => {
         />
       </div>
       <div ref={parallaxRefText} className="absolute w-full h-screen flex justify-center ">
-      <div className="text-xl font-roboto font-black text-white [text-shadow:0px_4px_4px_var(--tw-shadow-color)] shadow-black text-6xl relative top-[30%]" 
+      <div className="font-roboto font-black text-center text-white [text-shadow:0px_4px_4px_var(--tw-shadow-color)] shadow-black text-6xl relative top-[40%]" 
           >Front End Developer Challenge</div>
       </div>
       
