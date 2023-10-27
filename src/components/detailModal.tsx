@@ -20,7 +20,6 @@ const DetailModal = ({ data, onClose }: any) => {
         );
         if (response.ok) {
           const data = await response.json();
-          console.log(data)
           setComments(data);
           setLoading(false);
         } else {
@@ -52,7 +51,7 @@ const DetailModal = ({ data, onClose }: any) => {
                 &times;
               </div>
             </div>
-            <p>{data.body}</p>
+            <p className="max-h-[30vh] overflow-y-auto md:max-h-[50vh]">{data.body}</p>
             <div className=" mt-3 p-3 pr-1 rounded-md">
               <h1 className="font-bold">Comments</h1>
               {loading ? (
