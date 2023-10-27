@@ -1,4 +1,5 @@
 "use client";
+import UpdateUserModal from "@/components/patchUserModal";
 import NewUserModal from "@/components/postUserModal";
 import React, { useState, useEffect } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
@@ -13,22 +14,22 @@ const User = () => {
   }
   const [users, setUsers] = useState<User[]>([]);
   const [searchInput, setSearchInput] = useState("");
-  const [userToUpdate, setUserToUpdate] = useState<User>();
+  const [userToUpdate, setUserToUpdate] = useState<any>();
+  const [idToUpdate, setIdToUpdate] = useState<any>();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
 
   const token = process.env.NEXT_PUBLIC_REACT_APP_BEARER_TOKEN;
 
-  const handleUpdateUserSubmit = (userToUpdate: User) => {
-    const apiUrl = `https://gorest.co.in/public/v2/users/${userToUpdate.id}`;
-
+  const handleUpdateUserSubmit = (bodyUpdate: any) => {
+    const apiUrl = `https://gorest.co.in/public/v2/users/${idToUpdate}`;
     fetch(apiUrl, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(userToUpdate),
+      body: JSON.stringify(bodyUpdate),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -106,7 +107,7 @@ const User = () => {
   const closeUpdateModal = () => {
     setIsModalUpdateOpen(false);
   };
-  
+
   const openPostModal = () => {
     setIsModalOpen(true);
   };
@@ -173,7 +174,14 @@ const User = () => {
           <p>Gender: {user.gender}</p>
           <p>Status: {user.status}</p>
           <AiOutlineDelete onClick={() => handleDeleteUserSubmit(user.id)} />
-          <button onClick={() => openUpdateModal(user)}>Edit</button>
+          <button
+            onClick={() => {
+              openUpdateModal(user);
+              setIdToUpdate(user.id);
+            }}
+          >
+            Edit
+          </button>
         </div>
       ))}
       <button
@@ -182,6 +190,12 @@ const User = () => {
       >
         Create New User
       </button>
+      <UpdateUserModal
+        onClose={closeUpdateModal}
+        isOpen={isModalUpdateOpen}
+        userToUpdate={userToUpdate}
+        onSubmit={handleUpdateUserSubmit}
+      />
       <NewUserModal
         isOpen={isModalOpen}
         onClose={closePostModal}
