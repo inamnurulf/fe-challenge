@@ -31,7 +31,6 @@ const Post = () => {
     fetch(apiUrl)
       .then((response) => response.json())
       .then(async (data) => {
-        console.log(data)
         setArray(data);
       })
       .catch((error) => {

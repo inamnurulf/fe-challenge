@@ -4,6 +4,7 @@ import NewUserModal from "@/components/postUserModal";
 import UserCard from "@/components/userCard";
 import React, { useState, useEffect } from "react";
 import {AiOutlineUserAdd} from"react-icons/ai"
+import { toast } from "react-toastify";
 
 const User = () => {
   interface User {
@@ -40,8 +41,20 @@ const User = () => {
               user.id === data.id ? { ...user, ...data } : user
             )
           );
+          toast("User Data Updated: Changes Applied! ✨", {
+            hideProgressBar: false,
+            autoClose: 2000,
+            type: "success",
+            theme: "colored",
+          });
         } else {
           console.error("Error updating the user:", data);
+          toast(`Error updating the user` , {
+            hideProgressBar: false,
+            autoClose: 2000,
+            type: "error",
+            theme: "colored",
+          });
         }
       })
       .catch((error) => {
@@ -63,8 +76,20 @@ const User = () => {
           setUsers((prevUsers) =>
             prevUsers.filter((user: any) => user.id !== userId)
           );
+          toast("User Profile Vanquished from the Database! ⚰️", {
+            hideProgressBar: false,
+            autoClose: 2000,
+            type: "success",
+            theme: "colored",
+          });
         } else {
           console.error(`Error deleting user with ID ${userId}`);
+          toast(`Error deleting user with ID ${userId}` , {
+            hideProgressBar: false,
+            autoClose: 2000,
+            type: "error",
+            theme: "colored",
+          });
         }
       })
       .catch((error) => {
@@ -84,11 +109,22 @@ const User = () => {
     })
       .then((response) => response.json())
       .then((data: any) => {
-        console.log(data);
         if (data.id) {
-          setUsers((prevUsers) => [...prevUsers, data]);
+          setUsers((prevUsers) => [data, ...prevUsers]);
+          toast("User Data Uploaded to the Matrix! 🤖", {
+            hideProgressBar: false,
+            autoClose: 2000,
+            type: "success",
+            theme: "colored",
+          });
         } else {
           console.error("Error creating a new user:", data);
+          toast(`Error creating a new user: ${data[0]?.field} ${data[0]?.message}` , {
+            hideProgressBar: false,
+            autoClose: 2000,
+            type: "error",
+            theme: "colored",
+          });
         }
       })
       .catch((error) => {
@@ -144,7 +180,7 @@ const User = () => {
   }, []);
 
   return (
-    <section className="min-h-screen bg-primary">
+    <section className="min-h-screen bg-primary pb-5">
       <div className="p-5 mx-auto w-[90vw]">
         <div className="font-roboto font-black self-start m-5  text-white [text-shadow:0px_4px_4px_var(--tw-shadow-color)] shadow-black text-4xl relative">
           User Section
