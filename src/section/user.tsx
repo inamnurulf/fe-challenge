@@ -1,9 +1,10 @@
 "use client";
+import LoadingSpinner from "@/components/loadingSpinner";
 import UpdateUserModal from "@/components/patchUserModal";
 import NewUserModal from "@/components/postUserModal";
 import UserCard from "@/components/userCard";
 import React, { useState, useEffect } from "react";
-import {AiOutlineUserAdd} from"react-icons/ai"
+import { AiOutlineUserAdd } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 const User = () => {
@@ -19,6 +20,7 @@ const User = () => {
   const [userToUpdate, setUserToUpdate] = useState<any>();
   const [idToUpdate, setIdToUpdate] = useState<any>();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
 
   const token = process.env.NEXT_PUBLIC_REACT_APP_BEARER_TOKEN;
@@ -49,7 +51,7 @@ const User = () => {
           });
         } else {
           console.error("Error updating the user:", data);
-          toast(`Error updating the user` , {
+          toast(`Error updating the user`, {
             hideProgressBar: false,
             autoClose: 2000,
             type: "error",
@@ -84,7 +86,7 @@ const User = () => {
           });
         } else {
           console.error(`Error deleting user with ID ${userId}`);
-          toast(`Error deleting user with ID ${userId}` , {
+          toast(`Error deleting user with ID ${userId}`, {
             hideProgressBar: false,
             autoClose: 2000,
             type: "error",
@@ -119,12 +121,15 @@ const User = () => {
           });
         } else {
           console.error("Error creating a new user:", data);
-          toast(`Error creating a new user: ${data[0]?.field} ${data[0]?.message}` , {
-            hideProgressBar: false,
-            autoClose: 2000,
-            type: "error",
-            theme: "colored",
-          });
+          toast(
+            `Error creating a new user: ${data[0]?.field} ${data[0]?.message}`,
+            {
+              hideProgressBar: false,
+              autoClose: 2000,
+              type: "error",
+              theme: "colored",
+            }
+          );
         }
       })
       .catch((error) => {
@@ -173,6 +178,7 @@ const User = () => {
       .then((response) => response.json())
       .then(async (data) => {
         setUsers(data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
@@ -186,7 +192,10 @@ const User = () => {
           User Section
         </div>
         <div className="bg-white mt-5 w-full h-[2px] [text-shadow:0px_4px_4px_var(--tw-shadow-color)] shadow-black" />
-        <p className="text-white text-roboto"> Section ini merupakan bagian swipper dilengkapi dengan clickable pagination yang interactive</p>
+        <p className="text-white text-roboto">
+          {" "}
+          Section ini merupakan bagian user dilengkapi dengan CRUD fitur juga dengan berbagai handlernya termasuk loading.
+        </p>
       </div>
       <div className="max-w-[90vw] md:max-w-[70vw] mx-auto py-3">
         <div className="relative">
@@ -210,26 +219,28 @@ const User = () => {
           />
         </div>
         <button
-        onClick={openPostModal}
-        className="text-primary relative right-0 m-3 mx-0 bg-white hover:bg-primary hover:text-white border hover:border-white border-2 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 flex justify-between items-center"
-      >
-        <AiOutlineUserAdd
-        className="text-xl"
-        />
-        <div className="hidden md:block"> Create New User</div>
-      </button>
+          onClick={openPostModal}
+          className="text-primary relative right-0 m-3 mx-0 bg-white hover:bg-primary hover:text-white border hover:border-white border-2 focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 flex justify-between items-center"
+        >
+          <AiOutlineUserAdd className="text-xl" />
+          <div className="hidden md:block"> Create New User</div>
+        </button>
       </div>
       <div className="bg-white rounded-md my-3 mx-auto p-3 max-w-[85vw] h-[80vh] overflow-y-auto">
-        {filteredUsers.map((user: any) => (
-          <UserCard
-            key={user.id}
-            user={user}
-            handleDeleteUserSubmit={handleDeleteUserSubmit}
-            openUpdateModal={openUpdateModal}
-            setIdToUpdate={setIdToUpdate}
-          />
-        ))}
-        <div className="text-center">No more data...</div>
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          filteredUsers.map((user: any) => (
+            <UserCard
+              key={user.id}
+              user={user}
+              handleDeleteUserSubmit={handleDeleteUserSubmit}
+              openUpdateModal={openUpdateModal}
+              setIdToUpdate={setIdToUpdate}
+            />
+          ))
+        )}
+        {loading ? null : <div className="text-center">No more data...</div>}
       </div>
       <UpdateUserModal
         onClose={closeUpdateModal}

@@ -6,7 +6,7 @@ const Card = ({ post, onClick }: any) => {
     onClick();
   };
   return (
-    <div className="bg-white text-primary max-w-[50vw] hover:max-w-[55vw] flex flex-col rounded-xl shadow-lg p-4">
+    <div className="bg-white text-primary md:max-w-[50vw] flex flex-col rounded-xl shadow-lg p-4">
       <div className="flex items-center justify-between my-auto">
         <div className="flex items-center space-x-4">
           <div className="text-md font-bold line-clamp-2">{post?.title}</div>
