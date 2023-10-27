@@ -36,13 +36,13 @@ const Hero = () => {
       parallaxRefText.current
       
     ) {
-      parallaxRef1.current.style.transform = `translateY(+${scrollY * 0.6}px)`;
-      parallaxRef2.current.style.transform = `translateY(+${scrollY * 0.4}px)`;
-      parallaxRef3.current.style.transform = `translateY(+${scrollY * 0.3}px)`;
+      parallaxRef1.current.style.transform = `translateY(+${scrollY * 1}px)`;
+      parallaxRef2.current.style.transform = `translateY(+${scrollY * 0.8}px)`;
+      parallaxRef3.current.style.transform = `translateY(+${scrollY * 0.5}px)`;
       parallaxRef4.current.style.transform = `translateY(+${scrollY * 0.0}px)`;
-      parallaxRefDrone.current.style.transform = `translateY(+${scrollY * 0.1}px)`;
+      parallaxRefDrone.current.style.transform = `translateY(+${scrollY * 0.3}px)`;
       parallaxRefMoon.current.style.transform = `translateY(+${scrollY * 0.7}px)`;
-      parallaxRefText.current.style.transform = `translateY(+${scrollY * 0.1}px)`;
+      parallaxRefText.current.style.transform = `translateY(+${scrollY * 0.9}px)`;
 
     }
   }, [scrollY]);

@@ -11,7 +11,7 @@ const UserCard = ({
   return (
     <div
       key={user.id}
-      className="text-primary bg-white p-4 my-3 rounded-lg md:max-w-[80%] mx-auto border border-2 border-primary overflow-hidden"
+      className="text-primary bg-white p-4 my-3 rounded-lg md:max-w-[95%] mx-auto border border-2 border-primary overflow-hidden"
     >
       <div className="flex justify-between w-full">
         <div className="max-w-[70%]">

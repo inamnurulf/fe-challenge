@@ -226,7 +226,7 @@ const User = () => {
           <div className="hidden md:block"> Create New User</div>
         </button>
       </div>
-      <div className="bg-white rounded-md my-3 mx-auto p-3 max-w-[85vw] h-[80vh] overflow-y-auto">
+      <div className="bg-white rounded-md my-3 mx-auto p-3 max-w-[70vw] h-[80vh] overflow-y-auto scrollbar">
         {loading ? (
           <LoadingSpinner />
         ) : (
