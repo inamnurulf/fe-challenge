@@ -18,7 +18,7 @@ const Post = () => {
   const [dataModalOpen, setDataModalOpen] = useState();
   const [array, setArray] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [windowSize, setWindowSize] = useState<number>(window.innerWidth);
+  const [windowSize, setWindowSize] = useState<number>(0);
 
   const openModal = (data: any) => {
     setDataModalOpen(data);
@@ -30,6 +30,10 @@ const Post = () => {
   };
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowSize(window.innerWidth);
+    }
+    
     const handleResize = () => {
       setWindowSize(window.innerWidth);
     };
