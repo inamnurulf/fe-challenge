@@ -44,12 +44,12 @@ const Post = () => {
   return (
     <section className="min-h-screen bg-primary max-w-screen flex flex-col items-center">
       {isModalOpen && <DetailModal data={dataModalOpen} onClose={closeModal} />}
-      <div className="p-5">
+      <div className="p-5 w-[90vw]">
         <div className="font-roboto font-black self-start m-5  text-white [text-shadow:0px_4px_4px_var(--tw-shadow-color)] shadow-black text-4xl relative">
           Post Section
         </div>
-        <div className="bg-white mt-5 w-[90vw] h-[2px] [text-shadow:0px_4px_4px_var(--tw-shadow-color)] shadow-black" />
-        <p className="text-white text-roboto"> Section ini merupakan bagian swipper dengan data didapat dari post menggunakan server-side data fetching. Dilengkapi dengan clickable pagination yang interactive</p>
+        <div className="bg-white mt-5 w-full h-[2px] [text-shadow:0px_4px_4px_var(--tw-shadow-color)] shadow-black" />
+        <p className="text-white text-roboto"> Section ini merupakan bagian swipper dilengkapi dengan clickable pagination yang interactive</p>
       </div>
       <div className="sm:px-8 max-w-[90vw] mx-auto relative top-[40%]">
         <Swiper

@@ -3,6 +3,7 @@ import UpdateUserModal from "@/components/patchUserModal";
 import NewUserModal from "@/components/postUserModal";
 import UserCard from "@/components/userCard";
 import React, { useState, useEffect } from "react";
+import {AiOutlineUserAdd} from"react-icons/ai"
 
 const User = () => {
   interface User {
@@ -144,7 +145,14 @@ const User = () => {
 
   return (
     <section className="min-h-screen bg-primary">
-      <form className="max-w-[90vw] md:max-w-[70vw] mx-auto py-3">
+      <div className="p-5 mx-auto w-[90vw]">
+        <div className="font-roboto font-black self-start m-5  text-white [text-shadow:0px_4px_4px_var(--tw-shadow-color)] shadow-black text-4xl relative">
+          User Section
+        </div>
+        <div className="bg-white mt-5 w-full h-[2px] [text-shadow:0px_4px_4px_var(--tw-shadow-color)] shadow-black" />
+        <p className="text-white text-roboto"> Section ini merupakan bagian swipper dilengkapi dengan clickable pagination yang interactive</p>
+      </div>
+      <div className="max-w-[90vw] md:max-w-[70vw] mx-auto py-3">
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg
@@ -165,7 +173,16 @@ const User = () => {
             onChange={handleSearch}
           />
         </div>
-      </form>
+        <button
+        onClick={openPostModal}
+        className="text-primary relative right-0 m-3 mx-0 bg-white hover:bg-primary hover:text-white border hover:border-white border-2 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 flex justify-between items-center"
+      >
+        <AiOutlineUserAdd
+        className="text-xl"
+        />
+        <div className="hidden md:block"> Create New User</div>
+      </button>
+      </div>
       <div className="bg-white rounded-md my-3 mx-auto p-3 max-w-[85vw] h-[80vh] overflow-y-auto">
         {filteredUsers.map((user: any) => (
           <UserCard
@@ -178,12 +195,6 @@ const User = () => {
         ))}
         <div className="text-center">No more data...</div>
       </div>
-      <button
-        onClick={openPostModal}
-        className="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2"
-      >
-        Create New User
-      </button>
       <UpdateUserModal
         onClose={closeUpdateModal}
         isOpen={isModalUpdateOpen}
