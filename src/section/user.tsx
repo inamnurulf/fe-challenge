@@ -1,8 +1,8 @@
 "use client";
 import UpdateUserModal from "@/components/patchUserModal";
 import NewUserModal from "@/components/postUserModal";
+import UserCard from "@/components/userCard";
 import React, { useState, useEffect } from "react";
-import { AiOutlineDelete } from "react-icons/ai";
 
 const User = () => {
   interface User {
@@ -33,7 +33,6 @@ const User = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data.id) {
           setUsers((prevUsers) =>
             prevUsers.map((user: any) =>
@@ -145,7 +144,7 @@ const User = () => {
 
   return (
     <section className="min-h-screen bg-primary">
-      <form className="max-w-[90vw] md:max-w-[70vw] mx-auto">
+      <form className="max-w-[90vw] md:max-w-[70vw] mx-auto py-3">
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg
@@ -167,23 +166,18 @@ const User = () => {
           />
         </div>
       </form>
-      {filteredUsers.map((user: any) => (
-        <div key={user.id} className="bg-white p-4 mb-4 rounded-lg">
-          <h2 className="text-xl font-bold">{user.name}</h2>
-          <p>Email: {user.email}</p>
-          <p>Gender: {user.gender}</p>
-          <p>Status: {user.status}</p>
-          <AiOutlineDelete onClick={() => handleDeleteUserSubmit(user.id)} />
-          <button
-            onClick={() => {
-              openUpdateModal(user);
-              setIdToUpdate(user.id);
-            }}
-          >
-            Edit
-          </button>
-        </div>
-      ))}
+      <div className="bg-white rounded-md my-3 mx-auto p-3 max-w-[85vw] h-[80vh] overflow-y-auto">
+        {filteredUsers.map((user: any) => (
+          <UserCard
+            key={user.id}
+            user={user}
+            handleDeleteUserSubmit={handleDeleteUserSubmit}
+            openUpdateModal={openUpdateModal}
+            setIdToUpdate={setIdToUpdate}
+          />
+        ))}
+        <div className="text-center">No more data...</div>
+      </div>
       <button
         onClick={openPostModal}
         className="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2"
