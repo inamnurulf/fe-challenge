@@ -62,7 +62,7 @@ const Post = () => {
   const chunkSize = calculateChunkSize(windowSize);
   const chunkedCards = chunkArray({ arr: array, size: chunkSize });
   return (
-    <section className="min-h-screen bg-primary max-w-screen flex flex-col items-center">
+    <section className="min-h-screen max-w-screen flex flex-col items-center">
       {isModalOpen && <DetailModal data={dataModalOpen} onClose={closeModal} />}
       <div className="p-5 w-[90vw]">
         <div className="font-roboto font-black self-start m-5  text-white [text-shadow:0px_4px_4px_var(--tw-shadow-color)] shadow-black text-4xl relative">

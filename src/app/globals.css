@@ -32,3 +32,12 @@
       background: #0C3C80;
     }
   }
+  .backgroundsection{
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url('/background.svg');
+  }

@@ -1,29 +1,29 @@
 import React, { useState } from "react";
 
-const UpdateUserModal = ({ isOpen, onClose, onSubmit,userToUpdate }:any) => {
+const UpdateUserModal = ({ isOpen, onClose, onSubmit, userToUpdate }: any) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
   const [status, setStatus] = useState("");
 
   const handleSubmit = () => {
-    let newUser:any = {};
+    let newUser: any = {};
 
-  if (name) {
-    newUser.name = name;
-  }
+    if (name) {
+      newUser.name = name;
+    }
 
-  if (email) {
-    newUser.email = email;
-  }
+    if (email) {
+      newUser.email = email;
+    }
 
-  if (gender) {
-    newUser.gender = gender;
-  }
+    if (gender) {
+      newUser.gender = gender;
+    }
 
-  if (status) {
-    newUser.status = status;
-  }
+    if (status) {
+      newUser.status = status;
+    }
 
     onSubmit(newUser);
 
@@ -38,11 +38,8 @@ const UpdateUserModal = ({ isOpen, onClose, onSubmit,userToUpdate }:any) => {
     <div
       className={`fixed z-10 inset-0 overflow-y-auto ${isOpen ? "" : "hidden"}`}
     >
-      <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-        <div
-          className="fixed inset-0 transition-opacity"
-          aria-hidden="true"
-        >
+      <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0 text-primary">
+        <div className="fixed inset-0 transition-opacity" aria-hidden="true">
           <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
         </div>
         <span
@@ -58,7 +55,10 @@ const UpdateUserModal = ({ isOpen, onClose, onSubmit,userToUpdate }:any) => {
           aria-labelledby="modal-headline"
         >
           <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-            <h3 className="text-lg font-medium leading-6 text-gray-900" id="modal-headline">
+            <h3
+              className="text-lg font-medium leading-6text-primary"
+              id="modal-headline"
+            >
               Update <span className="font-bold">{userToUpdate?.name}</span>
             </h3>
             <div className="mt-2">
@@ -66,14 +66,17 @@ const UpdateUserModal = ({ isOpen, onClose, onSubmit,userToUpdate }:any) => {
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700"
               >
-                Name{" "}<span className="text-slate-300 text-">{userToUpdate?.name}</span>
+                Name{" "}
+                <span className="text-slate-300 text-">
+                  {userToUpdate?.name}
+                </span>
               </label>
               <input
                 type="text"
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className={`mt-1 p-2 border rounded-lg w-full`}
+                className={`mt-1 p-2 border border-primary rounded-lg w-full`}
               />
             </div>
             <div className="mt-2">
@@ -81,14 +84,17 @@ const UpdateUserModal = ({ isOpen, onClose, onSubmit,userToUpdate }:any) => {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
               >
-                Email{" "}<span className="text-slate-300 text-">{userToUpdate?.email}</span>
+                Email{" "}
+                <span className="text-slate-300 text-">
+                  {userToUpdate?.email}
+                </span>
               </label>
               <input
                 type="email"
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className={`mt-1 p-2 border rounded-lg w-full`}
+                className={`mt-1 p-2 border border-primary rounded-lg w-full`}
               />
             </div>
             <div className="mt-2">
@@ -96,13 +102,16 @@ const UpdateUserModal = ({ isOpen, onClose, onSubmit,userToUpdate }:any) => {
                 htmlFor="gender"
                 className="block text-sm font-medium text-gray-700"
               >
-                Gender{" "}<span className="text-slate-300 text-">{userToUpdate?.gender}</span>
+                Gender{" "}
+                <span className="text-slate-300 text-">
+                  {userToUpdate?.gender}
+                </span>
               </label>
               <select
                 id="gender"
                 value={gender}
                 onChange={(e) => setGender(e.target.value)}
-                className={`mt-1 p-2 border rounded-lg w-full`}
+                className={`mt-1 p-2 border border-primary rounded-lg w-full`}
               >
                 <option value="">Select Gender</option>
                 <option value="Male">Male</option>
@@ -114,13 +123,16 @@ const UpdateUserModal = ({ isOpen, onClose, onSubmit,userToUpdate }:any) => {
                 htmlFor="status"
                 className="block text-sm font-medium text-gray-700"
               >
-                Status{" "}<span className="text-slate-300 text-">{userToUpdate?.status}</span>
+                Status{" "}
+                <span className="text-slate-300 text-">
+                  {userToUpdate?.status}
+                </span>
               </label>
               <select
                 id="status"
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
-                className={` mt-1 p-2 border rounded-lg w-full`}
+                className={` mt-1 p-2 border border-primary rounded-lg w-full`}
               >
                 <option value="">Select Status</option>
                 <option value="Active">Active</option>

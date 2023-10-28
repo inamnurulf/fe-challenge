@@ -186,7 +186,7 @@ const User = () => {
   }, []);
 
   return (
-    <section className="min-h-screen bg-primary pb-5">
+    <section className="min-h-screen pb-5">
       <div className="p-5 mx-auto w-[90vw]">
         <div className="font-roboto font-black self-start m-5  text-white [text-shadow:0px_4px_4px_var(--tw-shadow-color)] shadow-black text-4xl relative">
           User Section
