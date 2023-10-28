@@ -36,14 +36,32 @@ const Hero = () => {
       parallaxRefText.current
       
     ) {
-      parallaxRef1.current.style.transform = `translateY(+${scrollY * 1}px)`;
-      parallaxRef2.current.style.transform = `translateY(+${scrollY * 0.8}px)`;
-      parallaxRef3.current.style.transform = `translateY(+${scrollY * 0.5}px)`;
-      parallaxRef4.current.style.transform = `translateY(+${scrollY * 0.0}px)`;
-      parallaxRefDrone.current.style.transform = `translateY(+${scrollY * 0.3}px)`;
-      parallaxRefMoon.current.style.transform = `translateY(+${scrollY * 0.7}px)`;
-      parallaxRefText.current.style.transform = `translateY(+${scrollY * 0.9}px)`;
+      const screenWidth = window.innerWidth;
+      if (screenWidth > 768) { 
+        parallaxRef1.current.classList.remove('disable-parallax');
+        parallaxRef2.current.classList.remove('disable-parallax');
+        parallaxRef3.current.classList.remove('disable-parallax');
+        parallaxRef4.current.classList.remove('disable-parallax');
+        parallaxRefDrone.current.classList.remove('disable-parallax');
+        parallaxRefMoon.current.classList.remove('disable-parallax');
+        parallaxRefText.current.classList.remove('disable-parallax');
 
+        parallaxRef1.current.style.transform = `translateY(+${scrollY * 1}px)`;
+        parallaxRef2.current.style.transform = `translateY(+${scrollY * 0.8}px)`;
+        parallaxRef3.current.style.transform = `translateY(+${scrollY * 0.5}px)`;
+        parallaxRef4.current.style.transform = `translateY(+${scrollY * 0.0}px)`;
+        parallaxRefDrone.current.style.transform = `translateY(+${scrollY * 0.3}px)`;
+        parallaxRefMoon.current.style.transform = `translateY(+${scrollY * 0.7}px)`;
+        parallaxRefText.current.style.transform = `translateY(+${scrollY * 0.9}px)`;
+      } else {
+        parallaxRef1.current.classList.add('disable-parallax');
+        parallaxRef2.current.classList.add('disable-parallax');
+        parallaxRef3.current.classList.add('disable-parallax');
+        parallaxRef4.current.classList.add('disable-parallax');
+        parallaxRefDrone.current.classList.add('disable-parallax');
+        parallaxRefMoon.current.classList.add('disable-parallax');
+        parallaxRefText.current.classList.add('disable-parallax');
+      }
     }
   }, [scrollY]);
 

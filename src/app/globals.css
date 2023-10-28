@@ -41,3 +41,6 @@
     background-position: center;
     background-image: url('/background.svg');
   }
+  .disable-parallax {
+    transform: translateY(0) !important;
+  }
