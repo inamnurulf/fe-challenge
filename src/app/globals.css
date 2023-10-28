@@ -3,44 +3,60 @@
 @tailwind utilities;
 
 .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .scrollbar-hide {
-    -ms-overflow-style: none;  
-    scrollbar-width: none;  
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @layer utilities {
-    .scrollbar::-webkit-scrollbar {
-      width: 10px;
-      height: 20px;
+  .scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 20px;
+  }
+
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
     }
-  
-    .scrollbar::-webkit-scrollbar-track {
-      border-radius: 100vh;
-      background: #ffffff4f;
+    40% {
+      transform: translateY(-15px);
     }
-  
-    .scrollbar::-webkit-scrollbar-thumb {
-      background: #001842;
-      border-radius: 100vh;
-      border: 2px solid #ffffff73;
-    }
-  
-    .scrollbar::-webkit-scrollbar-thumb:hover {
-      background: #0C3C80;
+    60% {
+      transform: translateY(-7px);
     }
   }
-  .backgroundsection{
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-image: url('/background.svg');
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #ffffff4f;
   }
-  .disable-parallax {
-    transform: translateY(0) !important;
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #001842;
+    border-radius: 100vh;
+    border: 2px solid #ffffff73;
   }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #0c3c80;
+  }
+}
+.backgroundsection {
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-image: url("/background.svg");
+}
+.disable-parallax {
+  transform: translateY(0) !important;
+}

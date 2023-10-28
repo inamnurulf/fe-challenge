@@ -1,4 +1,5 @@
 "use client";
+import DeleteConfirmationModal from "@/components/deleteConfirmationModal";
 import LoadingSpinner from "@/components/loadingSpinner";
 import UpdateUserModal from "@/components/patchUserModal";
 import NewUserModal from "@/components/postUserModal";
@@ -22,6 +23,8 @@ const User = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<any>(null);
 
   const token = process.env.NEXT_PUBLIC_REACT_APP_BEARER_TOKEN;
 
@@ -137,6 +140,23 @@ const User = () => {
       });
   };
 
+  const openDeleteModal = (user:any) => {
+    setItemToDelete(user);
+    setIsDeleteModalOpen(true);
+  };
+
+  const closeDeleteModal = () => {
+    setIsDeleteModalOpen(false);
+    setItemToDelete(null);
+  };
+
+  const confirmDelete = () => {
+    if (itemToDelete) {
+      handleDeleteUserSubmit(itemToDelete.id);
+      closeDeleteModal();
+    }
+  };
+
   const handleSearch = (e: any) => {
     setSearchInput(e.target.value);
   };
@@ -232,11 +252,11 @@ const User = () => {
         ) : (
           filteredUsers.map((user: any) => (
             <UserCard
-              key={user.id}
-              user={user}
-              handleDeleteUserSubmit={handleDeleteUserSubmit}
-              openUpdateModal={openUpdateModal}
-              setIdToUpdate={setIdToUpdate}
+            key={user.id}
+            user={user}
+            handleDeleteUserSubmit={openDeleteModal} 
+            openUpdateModal={openUpdateModal}
+            setIdToUpdate={setIdToUpdate}
             />
           ))
         )}
@@ -252,6 +272,11 @@ const User = () => {
         isOpen={isModalOpen}
         onClose={closePostModal}
         onSubmit={handleNewUserSubmit}
+      />
+      <DeleteConfirmationModal
+        isOpen={isDeleteModalOpen}
+        onClose={closeDeleteModal}
+        onConfirm={confirmDelete}
       />
     </section>
   );

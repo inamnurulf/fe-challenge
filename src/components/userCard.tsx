@@ -24,7 +24,7 @@ const UserCard = ({
           <div></div>
           <AiOutlineDelete
             className="hover:bg-primary hover:text-white rounded-md"
-            onClick={() => handleDeleteUserSubmit(user.id)}
+            onClick={() => handleDeleteUserSubmit(user)}
           />
           <BiEdit
             className="hover:bg-primary hover:text-white rounded-md"
